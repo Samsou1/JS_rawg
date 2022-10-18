@@ -5,9 +5,25 @@ const PageList = (argument = '', items = 9) => {
       console.log(articles)
       const resultsContent = articles.map((article) => (
         `<article class="cardGame">
-          <img src=${article.background_image}>
-          <a href="#pagedetail/${article.id}"><h1>${article.name}</h1></a>
-          <p>${article.platforms.reduce(function(acc, element){
+          <img src=${article.background_image} class="image">
+          <a href="#pagedetail/${article.id}"><h2>${article.name}</h2></a>
+          <p>${article.parent_platforms.reduce(function(acc, element){
+            // switch (element.platform.name) {
+            //   case "playstation":
+            //     <img src='/style/images/ps4.svg' alt="playstation"  height='100' width='100'/>;
+            //     break;
+            //   case "pc":
+            //     break;
+            //   case "xbox":
+            //     break;
+            //   case "nintendo":
+            //     break;
+            //   case "linux":
+            //     break;
+            //   case "mobile":
+            //     break;
+            //   case "switch":
+            // }
             return acc + ' ' + element.platform.name
           },'')}
           </p>
@@ -34,7 +50,8 @@ const PageList = (argument = '', items = 9) => {
     <section class="page-list">
     <div class="articles">Loading...</div>
     </section>
-    <button data-results='${items}'>Show more</button>
+    <button id="showmore"data-results='${items}'>Show more</button>
+    
     `;
     preparePage();
   };
