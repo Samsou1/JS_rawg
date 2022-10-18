@@ -45,7 +45,6 @@ const PageDetail = (argument) => {
       fetch(`${url}/${argument}?key=${import.meta.env.VITE_API_KEY}`)
         .then((response) => response.json())
         .then((responseData) => {
-          console.log(responseData)
           displayGame(responseData);
         });
     };

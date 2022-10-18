@@ -2,7 +2,6 @@ const PageList = (argument = '', items = 9) => {
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, '-');
     const displayResults = (articles) => {
-      console.log(articles)
       const resultsContent = articles.map((article) => (
         `<article class="cardGame">
           <img src=${article.background_image}>
