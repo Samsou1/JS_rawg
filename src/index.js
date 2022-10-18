@@ -1,4 +1,5 @@
 import routes from './js/routes.js'
+import "./style/main.scss"
 
 const callRoute = () => {
   const { hash } = window.location;

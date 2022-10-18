@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "AmaticSC";
+  src: url("/public/font/AmaticSC-Regular.ttf")
+}
+
+html {
+  font-size: 30px;
+}
+
+body {
+  font-family: 'AmaticSC', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-image: url("https://api.lorem.space/image/game?w=2000&h=2000");
+  background-size:cover;
+
+}
+
+h1 {
+  font-family: 'AmaticSC', sans-serif;
+  font-size: 50px;
+}
+
