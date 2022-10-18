@@ -1,7 +1,6 @@
-const PageList = (argument = '') => {
+const PageList = (argument = '', items = 9) => {
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, '-');
-
     const displayResults = (articles) => {
       const resultsContent = articles.map((article) => (
         `<article class="cardGame">
@@ -13,8 +12,8 @@ const PageList = (argument = '') => {
       resultsContainer.innerHTML = resultsContent.join("\n");
     };
 
-    const fetchList = (url, argument, numberOfResults = 9) => {
-      const finalURL = argument ? `${url}&search=${argument}&page_size=${numberOfResults}` : url;
+    const fetchList = (url, argument) => {
+      const finalURL = argument ? `${url}&search=${argument}&page_size=${items}` : url;
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
@@ -24,18 +23,32 @@ const PageList = (argument = '') => {
 
     fetchList(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}`, cleanedArgument);
   };
-
+  
   const render = () => {
     pageContent.innerHTML = `
-      <section class="page-list">
-        <div class="articles">Loading...</div>
-      </section>
-      <button>Show more</button>
+    <section class="page-list">
+    <div class="articles">Loading...</div>
+    </section>
+    <button data-results='${items}'>Show more</button>
     `;
-
     preparePage();
   };
-
+  
   render();
+  const button = document.querySelector('button');
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
+    const { hash } = window.location;
+    const pathParts = hash.substring(1).split('/');
+    const pageArgument = pathParts[1] || '';
+    if(button.dataset.results == '9'){
+      button.dataset.results = '18';
+      PageList(pageArgument,'18');
+    }else{
+      PageList(pageArgument,'27');
+      document.querySelector('button').remove();
+    }
+  })
 };
 export default PageList;
+
