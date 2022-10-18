@@ -23,13 +23,13 @@ const PageDetail = (argument) => {
         articleDOM.querySelector("p.platforms span").innerHTML += `<a href='pageList/${element.platform.name}'>${element.platform.name}</a>` + ' ';
       })
 
-      articleDOM.querySelector("p.website span").innerHTML = website;
-      articleDOM.querySelector("p.video span").innerHTML = `<video width="640" height="480" controls>
+      articleDOM.querySelector("a#website").setAttribute("href",website);
+      articleDOM.querySelector("p.video span").innerHTML = `<video controls>
         <source src="${metacritic_url}" type="video/mp4">
         Your browser does not support the video tag.
         </video>`;
-      articleDOM.querySelector("p.rating span").innerHTML = rating;
-      articleDOM.querySelector("p.ratingCount span").innerHTML = ratings_count;
+      articleDOM.querySelector(".rating").innerHTML = rating;
+      articleDOM.querySelector(".ratingcount").innerHTML = ratings_count;
       articleDOM.querySelector("p.release-date span").innerHTML = released;
       articleDOM.querySelector("p.description span").innerHTML = description;
       // screenshots.map(function(element){
@@ -57,19 +57,23 @@ const PageDetail = (argument) => {
     pageContent.innerHTML = `
       <section class="page-detail">
         <div class="article">
-          <h1 class="title"></h1>
           <img>
-          <p class='developers'>Developers: <span></span></p>
-          <p class='tags'>Tags: <span></span></p>
-          <p class='genres'>Genres: <span></span></p>
-          <p class='publishers'>Publishers: <span></span></p>
-          <p class='platforms'>Platforms: <span></span></p>
-          <p class='website'>Website: <span></span></p>
-          <p class='video'><span></span></p>
-          <p class='rating'>Rating: <span></span></p>
-          <p class='ratingCount'>Rating count: <span></span></p>
-          <p class="release-date">Release date: <span></span></p>
+          <div class='game-header'>
+            <h1 class="title"></h1>
+            <p><span class="rating"></span>/5 - <span class="ratingcount"></span> votes</p>
+          </div>
+          <h3 class="subtitle">Plot</h3>
           <p class="description"><span></span></p>
+          <div class='game-informations'>
+            <p class="release-date">Release date: <span></span></p>
+            <p class='developers'>Developers: <span></span></p>
+            <p class='platforms'>Platforms: <span></span></p>
+            <p class='publishers'>Publishers: <span></span></p>
+            <p class='tags'>Tags: <span></span></p>
+            <p class='genres'>Genres: <span></span></p>
+          </div>
+          <a id="website" href="" target="_blank">Website<span></span></a>
+          <p class='video'><span></span></p>
         </div>
       </section>
     `;

@@ -26,6 +26,7 @@ p {
 body {
   display: flex;
   flex-direction: column;
+  background-color: #292929;
 }
 
 header {
@@ -154,6 +155,21 @@ h1 {
  }
 }
 
-.page-list{
-  background-color: #292929;
+.articles {
+  color: #fff;
+  padding-bottom: 1rem;
+}
+
+.body::-webkit-scrollbar{
+  width: 8px;
+}
+
+.body::-webkit-scrollbar-track{
+  box-shadow: inset 0 0 6px  rgb(128, 0, 34);
+}
+
+.body::-webkit-scrollbar-thumb{
+  background-color: green;
+  outline: none;
+  border-radius: 10px;
 }
