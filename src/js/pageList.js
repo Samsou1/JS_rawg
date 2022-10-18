@@ -2,11 +2,16 @@ const PageList = (argument = '', items = 9) => {
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, '-');
     const displayResults = (articles) => {
+      console.log(articles)
       const resultsContent = articles.map((article) => (
         `<article class="cardGame">
+          <img src=${article.background_image}>
           <a href="#pagedetail/${article.id}"><h1>${article.name}</h1></a>
-          <h2>${article.released}</h2>
-        </article>`
+          <p>${article.platforms.reduce(function(acc, element){
+            return acc + ' ' + element.platform.name
+          },'')}
+          </p>
+         </article>`
       ));
       const resultsContainer = document.querySelector('.page-list .articles');
       resultsContainer.innerHTML = resultsContent.join("\n");
