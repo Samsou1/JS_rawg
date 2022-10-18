@@ -30,8 +30,19 @@ const PageList = (argument = '', items = 9) => {
   
   const render = () => {
     pageContent.innerHTML = `
+    <select>
+        <option selected="">Please Select</option>
+        <option>PC</option>
+        <option>PlayStation 4</option>
+        <option>PlayStation 5</option>
+        <option>Xbox Series S/X</option>
+        <option>Xbox One</option>
+        <option>Switch</option>
+        <option>Wii</option>
+        <option>Nintendo 3DS</option>
+    </select>
     <section class="page-list">
-    <div class="articles">Loading...</div>
+        <div class="articles">Loading...</div>
     </section>
     <button data-results='${items}'>Show more</button>
     `;
@@ -39,7 +50,7 @@ const PageList = (argument = '', items = 9) => {
   };
   
   render();
-  const button = document.querySelector('button');
+  const button = document.querySelector('main > button');
   button.addEventListener('click', (e) => {
     e.preventDefault();
     const { hash } = window.location;
@@ -50,7 +61,7 @@ const PageList = (argument = '', items = 9) => {
       PageList(pageArgument,'18');
     }else{
       PageList(pageArgument,'27');
-      document.querySelector('button').remove();
+      document.querySelector('main > button').remove();
     }
   })
 };
