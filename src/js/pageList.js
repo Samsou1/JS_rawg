@@ -13,7 +13,7 @@ const PageList = (argument = '', items = 9) => {
     };
 
     const fetchList = (url, argument) => {
-      const finalURL = argument ? `${url}&search=${argument}&page_size=${items}` : url;
+      const finalURL = argument ? `${url}&search=${argument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
