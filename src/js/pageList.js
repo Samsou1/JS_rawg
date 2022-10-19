@@ -13,7 +13,7 @@ const PageList = (argument = '', items = 9, platform = '',argumentType ='') => {
                 <p>Genres: ${article.genres.reduce(function (acc, element) {
                   return (
                     acc +
-                    `<a href='pageList/${element.name}'>${element.name}</a>` +
+                    `<a href='#pagelist/genres++${element.name}'>${element.name}</a>` +
                     " "
                   );
                 }, "")}</p>
