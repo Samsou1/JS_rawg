@@ -8,15 +8,51 @@ $mobile-responsive : 640px;
 
 // Les couleurs, tailles de marges, typos, tailles de typos et tailles récurrentes doivent être des variables
 html {
+  font-family: $main-fonts;
   font-size: 30px;
 }
 
-a:link {
-  color: white;
+h1 {
+  font-size: 50px;
 }
 
-a:visited {
-  color: white;
+h2 {
+  font-size: 20px;
+}
+
+a, a:visited, a:hover {
+	text-decoration: none;
+	position: relative;
+	color: white;
+	
+	&:after {
+		content: '';
+		height: 2px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		background: white;
+		transition: 0.2s;
+	}
+
+	&:hover:after {
+		width: 100%;
+	}
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.title-list {
+  height: 65px;
+}
+
+.cardGame a h2 {
+  margin-bottom: 3px;
 }
 
 p {
@@ -107,11 +143,6 @@ height: 50%;
   padding-right: 0.8rem;
 }
 
-h1 {
-  font-family: $main-fonts;
-  font-size: 50px;
-}
-
 .articles {
   display: flex;
   flex-wrap: wrap;
@@ -126,7 +157,8 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 300px;
-  opacity: 1;
+  padding-bottom: 25px;
+  cursor: pointer;
 }
 
 
@@ -161,6 +193,14 @@ h1 {
   align-items: center;
 }
 
+.game-header p {
+    padding: 0.4rem;
+    margin: 0 0.4rem;
+    border-radius: 3px;
+    font-weight: 600;
+    color: red;
+}
+
 .game-informations {
   display: flex;
   flex-wrap: wrap;
@@ -168,6 +208,10 @@ h1 {
 
 .game-informations > p {
   flex: 1 0 21%;
+  color: #fff;
+  padding-left: 1rem;
+  font-weight: 800;
+  color: red;
 }
 
 @mixin mobile{
@@ -181,12 +225,14 @@ h1 {
   padding-bottom: 1rem;
 }
 
-.body::-webkit-scrollbar{
-  width: 8px;
+.rating{
+  padding: 1rem 0;
+  color: red;
 }
 
-.body::-webkit-scrollbar-track{
-  box-shadow: inset 0 0 6px  rgb(128, 0, 34);
+
+.ratingcount{
+  color: red;
 }
 
 .body::-webkit-scrollbar-thumb{
@@ -195,3 +241,44 @@ h1 {
   border-radius: 10px;
 }
 
+.title {
+  font-size: 4rem;
+  color: #fff;
+  padding-left: 1rem;
+}
+
+.subtitle {
+  padding-left: 1rem;
+  color: #fff;
+}
+
+.subtitle h3{
+  font-weight: 800;
+  color: red;
+}
+
+.date-release {
+  color:#fff;
+  font-weight: 500;
+}
+
+#website {
+  max-width: 8rem;
+  padding-left: 1rem;
+  border-radius: 4rem;
+
+  &:after {
+		content: '';
+		height: 2px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		background: red;
+		transition: 0.2s;
+	}
+
+	&:hover:after {
+		width: 100%;
+	}
+}
