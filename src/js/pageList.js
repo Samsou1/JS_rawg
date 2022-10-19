@@ -3,7 +3,6 @@ const PageList = (argument = '', items = 9, platform = '') => {
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
     const displayResults = (articles) => {
-      console.log(articles)
       const resultsContent = articles.map((article) => (
         `<article onclick="location.href='#pagedetail/${article.id}';" class="cardGame">
           <img src=${article.background_image} class="image">
@@ -56,18 +55,15 @@ const PageList = (argument = '', items = 9, platform = '') => {
       const resultsContainer = document.querySelector('.page-list .articles');
       resultsContainer.innerHTML = resultsContent.join("\n");
     };
-
     const fetchList = (url, argument) => {
       let finalURL = argument ? `${url}&search=${argument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
       finalURL += platform ? `&platforms=${platform}` : '';
-      console.log(finalURL)
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
           displayResults(responseData.results);
         });
     };
-
     fetchList(
       `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}`,
       cleanedArgument
@@ -76,7 +72,8 @@ const PageList = (argument = '', items = 9, platform = '') => {
 
   const render = () => {
     pageContent.innerHTML = `
-    <select>
+    <section class="page-list">
+    <select class="sort">
         <option selected="">Please Select</option>
         <option>PC</option>
         <option>PlayStation 4</option>
@@ -86,8 +83,7 @@ const PageList = (argument = '', items = 9, platform = '') => {
         <option>Nintendo Switch</option>
         <option>Linux</option>
     </select>
-    <section class="page-list">
-        <div class="articles">Loading...</div>
+    <div class="articles">Loading...</div>
     </section>
     <button id="showmore"data-results='${items}'>Show more</button>
     
