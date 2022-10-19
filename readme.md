@@ -7,6 +7,10 @@ By default the app will show you 9 of the most awaited games of next year.
 You can of course display more games if you'd like. 
 
 ## How to run the server
+By default the app will show you 9 of the most expected games of next year.
+You can of course display more games if you'd like. 
+
+## How to launch the server
 
 You can use npm, pnpm or yarn to run the server
 ```
