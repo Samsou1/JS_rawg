@@ -7,30 +7,32 @@ const PageList = (argument = '', items = 9, platform = '') => {
       const resultsContent = articles.map((article) => (
         `<article class="cardGame">
           <img src=${article.background_image} class="image">
-          <a href="#pagedetail/${article.id}"><h2>${article.name}</h2></a>
-          <div>${article.parent_platforms.reduce(function(acc, element){
+          <div class="title-list">
+          <a href="#pagedetail/${article.id}"><h3>${article.name}</h3></a>
+          </div>
+          <div class="icons">${article.parent_platforms.reduce(function(acc, element){
             let newImg = ''
             switch (element.parent_platform.name.toLowerCase()) {
               case "playstation":
-                newImg = "<img src='/public/logos/ps4.svg' alt='playstation'  height='40' width='40'/>";
+                newImg = "<img src='/public/logos/ps4.svg' alt='playstation'  height='25' width='25'/>";
                 break;
               case "pc":
-                newImg = "<img src='/public/logos/windows.svg' alt='windows'  height='40' width='40'/>";
+                newImg = "<img src='/public/logos/windows.svg' alt='windows'  height='25' width='25'/>";
                 break;
               case "xbox":
-                newImg = "<img src='/public/logos/xbox.svg' alt='xbox'  height='40' width='40'/>";
+                newImg = "<img src='/public/logos/xbox.svg' alt='xbox'  height='25' width='25'/>";
                 break;
               case "nintendo":
-                newImg = "<img src='/public/logos/switch.svg' alt='switch'  height='40' width='40'/>";
+                newImg = "<img src='/public/logos/switch.svg' alt='switch'  height='25' width='25'/>";
                 break;
               case "linux":
-                newImg = "<img src='/public/logos/linux.svg' alt='linux'  height='40' width='40'/>";
+                newImg = "<img src='/public/logos/linux.svg' alt='linux'  height='25' width='25'/>";
                 break;
               case "mobile":
-                newImg = "<img src='/public/logos/mobile.svg' alt='mobile'  height='40' width='40'/>";
+                newImg = "<img src='/public/logos/mobile.svg' alt='mobile'  height='25' width='25'/>";
                 break;
               case "switch":
-                newImg = "<img src='/style/images/switch.svg' alt='switch'  height='40' width='40'/>";
+                newImg = "<img src='/style/images/switch.svg' alt='switch'  height='25' width='25'/>";
                 break;
             }
             return acc + newImg;
