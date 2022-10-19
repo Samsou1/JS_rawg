@@ -7,13 +7,21 @@ $headings-color: rgb(0, 0, 0);
 $mobile-responsive : 640px;
 $white-color: rgb(255, 255, 255);
 
+
+@font-face {
+  font-family: "Madjoe";
+  src: url("/font/Madjoe.ttf");
+}
+
+
 html {
   font-family: $main-fonts;
   font-size: 30px;
 }
 
 h1 {
-  font-size: 50px;
+  font-family: "Madjoe";
+  font-size: 90px;
 }
 
 h2 {
@@ -49,6 +57,7 @@ a, a:visited, a:hover {
 .page-list {
   max-width: 90%;
   margin-top: 50px;
+  padding-left: 12%;
 }
 
 .icons {
@@ -79,6 +88,7 @@ body {
   position: relative;
   background-color: #292929;
   border-radius: 10%;
+  
 }
 
 .sort {
