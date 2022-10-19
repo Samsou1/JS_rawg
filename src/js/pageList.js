@@ -4,9 +4,6 @@ const PageList = (argument = '', items = 9, platform = '') => {
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
     const displayResults = (articles) => {
       console.log(articles)
-    
-
-  
       const resultsContent = articles.map((article) => (
         `<article onclick="location.href='#pagedetail/${article.id}';" class="cardGame">
           <img src=${article.background_image} class="image">
@@ -63,7 +60,7 @@ const PageList = (argument = '', items = 9, platform = '') => {
     const fetchList = (url, argument) => {
       let finalURL = argument ? `${url}&search=${argument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
       finalURL += platform ? `&platforms=${platform}` : '';
-      // console.log(finalURL)
+      console.log(finalURL)
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
@@ -87,8 +84,7 @@ const PageList = (argument = '', items = 9, platform = '') => {
         <option>Xbox Series S/X</option>
         <option>Xbox One</option>
         <option>Nintendo Switch</option>
-        <option>Wii</option>
-        <option>Nintendo 3DS</option>
+        <option>Linux</option>
     </select>
     <section class="page-list">
         <div class="articles">Loading...</div>
