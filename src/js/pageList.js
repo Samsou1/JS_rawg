@@ -10,7 +10,7 @@ const PageList = (argument = '', items = 9, platform = '') => {
           <a href="#pagedetail/${article.id}"><h2>${article.name}</h2></a>
           <div>${article.parent_platforms.reduce(function(acc, element){
             let newImg = ''
-            switch (element.platform.name.toLowerCase()) {
+            switch (element.parent_platform.name.toLowerCase()) {
               case "playstation":
                 newImg = "<img src='/public/logos/ps4.svg' alt='playstation'  height='40' width='40'/>";
                 break;
