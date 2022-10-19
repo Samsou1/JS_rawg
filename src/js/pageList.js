@@ -79,7 +79,8 @@ const PageList = (argument = '', items = 9, platform = '') => {
 
   const render = () => {
     pageContent.innerHTML = `
-    <select>
+    <section class="page-list">
+    <select class="sort">
         <option selected="">Please Select</option>
         <option>PC</option>
         <option>PlayStation 4</option>
@@ -90,7 +91,6 @@ const PageList = (argument = '', items = 9, platform = '') => {
         <option>Wii</option>
         <option>Nintendo 3DS</option>
     </select>
-    <section class="page-list">
     <div class="articles">Loading...</div>
     </section>
     <button id="showmore"data-results='${items}'>Show more</button>
