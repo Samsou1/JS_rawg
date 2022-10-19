@@ -1,7 +1,7 @@
 const platforms = {'PC' : 4, 'PlayStation 5' :187, 'Xbox One':1, 'PlayStation 4': 18,'Xbox Series S/X':186, 'Linux' : 6, 'Nintendo Switch':7 , 'iOS':3, 'Android':21, 'Nintendo 3DS':8, 'Nintendo DS':9, 'Nintendo DSi':13, 'macOS':5, 'Xbox 360':14, 'Xbox':80, 'PlayStation 3':16, 'PlayStation ':15, 'PS Vita':19, 'PSP':17, 'Wii U':10, 'Wii':11, 'GameCube':105, 'Nintendo 64':83, 'Game Boy Advance':24, 'Game Boy Color':43, 'Game Boy':26}
 const PageList = (argument = '', items = 9, platform = '') => {
   const preparePage = () => {
-    const cleanedArgument = argument.trim().replace(/\s+/g, '-');
+    const cleanedArgument = argument.trim().replace(/\s+/g, "-");
     const displayResults = (articles) => {
       console.log(articles)
     
@@ -16,6 +16,7 @@ const PageList = (argument = '', items = 9, platform = '') => {
             <p>Genres: ${article.genres.reduce(function (acc, element) {
               return (
                 acc +
+                `<a href='pageList/${element.name}'>${element.name}</a>` +
                 " "
               );
             }, "")}</p>
@@ -62,20 +63,20 @@ const PageList = (argument = '', items = 9, platform = '') => {
     const fetchList = (url, argument) => {
       let finalURL = argument ? `${url}&search=${argument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
       finalURL += platform ? `&platforms=${platform}` : '';
-      console.log(finalURL)
+      // console.log(finalURL)
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
-          displayResults(responseData.results)
+          displayResults(responseData.results);
         });
     };
 
     fetchList(
-    fetchList(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}`, cleanedArgument);
+      `https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}`,
       cleanedArgument
     );
   };
-  
+
   const render = () => {
     pageContent.innerHTML = `
     <select>
@@ -112,7 +113,7 @@ const PageList = (argument = '', items = 9, platform = '') => {
     const pageArgument = pathParts[1] || "";
     if (button.dataset.results == "9") {
       button.dataset.results = "18";
-      PageList(pageArgument,'18');
+      PageList(pageArgument, "18");
     } else {
       PageList(pageArgument, "27");
       document.querySelector("button").remove();
