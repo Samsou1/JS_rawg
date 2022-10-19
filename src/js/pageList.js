@@ -72,7 +72,8 @@ const PageList = (argument = '', items = 9, platform = '') => {
     <section class="page-list">
     <div class="articles">Loading...</div>
     </section>
-    <button data-results='${items}'>Show more</button>
+    <button id="showmore"data-results='${items}'>Show more</button>
+    
     `;
     preparePage();
     const select = document.querySelector('select');
