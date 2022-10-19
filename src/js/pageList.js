@@ -5,10 +5,10 @@ const PageList = (argument = '', items = 9, platform = '') => {
     const displayResults = (articles) => {
       console.log(articles)
       const resultsContent = articles.map((article) => (
-        `<article class="cardGame">
+        `<article onclick="location.href='#pagedetail/${article.id}';" class="cardGame">
           <img src=${article.background_image} class="image">
           <div class="title-list">
-          <a href="#pagedetail/${article.id}"><h3>${article.name}</h3></a>
+          <h2>${article.name}</h2>
           </div>
           <div class="icons">${article.parent_platforms.reduce(function(acc, element){
             let newImg = ''
