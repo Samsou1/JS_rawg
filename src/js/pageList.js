@@ -12,7 +12,7 @@ const PageList = (argument = '', items = 9, platform = '') => {
           </div>
           <div class="icons">${article.parent_platforms.reduce(function(acc, element){
             let newImg = ''
-            switch (element.parent_platform.name.toLowerCase()) {
+            switch (element.platform.name.toLowerCase()) {
               case "playstation":
                 newImg = "<img src='/public/logos/ps4.svg' alt='playstation'  height='25' width='25'/>";
                 break;
