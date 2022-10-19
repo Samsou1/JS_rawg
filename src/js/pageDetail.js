@@ -36,7 +36,7 @@ const PageDetail = (argument) => {
       //   articleDOM.querySelectorAll("div.screenshots").innerHTML += `<img src=${element}>`;
       // })
       stores.map(function(element){
-        articleDOM.querySelectorAll("div.stores span").innerHTML += element+ ' ';
+        articleDOM.querySelector(".stores").innerHTML += `<span><a href='http://${element.store.domain}' target="_blank">${element.store.name}</p></span>`;
       })
       articleDOM.querySelector("p.release-date span").innerHTML = released;
     };
@@ -45,7 +45,6 @@ const PageDetail = (argument) => {
       fetch(`${url}/${argument}?key=${import.meta.env.VITE_API_KEY}`)
         .then((response) => response.json())
         .then((responseData) => {
-          console.log(responseData)
           displayGame(responseData);
         });
     };
@@ -74,6 +73,7 @@ const PageDetail = (argument) => {
             <p class='tags'>Tags: <span></span></p>
             <p class='genres'>Genres: <span></span></p>
           </div>
+          <div class="stores">Stores: </div>
           <a id="website" href="" target="_blank">Game website<span></span></a>
           <p class='video'><span></span></p>
         </div>
