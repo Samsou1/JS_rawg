@@ -5,52 +5,54 @@ const PageList = (argument = '', items = 9, platform = '') => {
     const displayResults = (articles) => {
       const resultsContent = articles.map((article) => (
         `<article onclick="location.href='#pagedetail/${article.id}';" class="cardGame">
-          <img src=${article.background_image} class="image">
-          <div class="overlay">
-          <div class="text">
-            <p>Released: ${article.released}</p>
-            <p>Genres: ${article.genres.reduce(function (acc, element) {
-              return (
-                acc +
-                `<a href='pageList/${element.name}'>${element.name}</a>` +
-                " "
-              );
-            }, "")}</p>
-            <p>Rating: ${article.rating} (${article.ratings_count} votes)</p>
+          <div class='overlay-image'>
+            <img src=${article.background_image} class="image">
+            <div class="hover">
+              <div class="text">
+                <p>Released: ${article.released}</p>
+                <p>Genres: ${article.genres.reduce(function (acc, element) {
+                  return (
+                    acc +
+                    `<a href='pageList/${element.name}'>${element.name}</a>` +
+                    " "
+                  );
+                }, "")}</p>
+                <p>Rating: ${article.rating} (${article.ratings_count} votes)</p>
+              </div>
           </div>
         </div>
-          <div class="title-list">
+        <div class="title-list">
           <h2>${article.name}</h2>
-          </div>
-          <div class="icons">${article.parent_platforms.reduce(function(acc, element){
-            let newImg = ''
-            switch (element.platform.name.toLowerCase()) {
-              case "playstation":
-                newImg = "<img src='/public/logos/ps4.svg' alt='playstation'  height='20' width='20'/>";
-                break;
-              case "pc":
-                newImg = "<img src='/public/logos/windows.svg' alt='windows'  height='20' width='20'/>";
-                break;
-              case "xbox":
-                newImg = "<img src='/public/logos/xbox.svg' alt='xbox'  height='20' width='20'/>";
-                break;
-              case "nintendo":
-                newImg = "<img src='/public/logos/switch.svg' alt='switch'  height='20' width='20'/>";
-                break;
-              case "linux":
-                newImg = "<img src='/public/logos/linux.svg' alt='linux'  height='20' width='20'/>";
-                break;
-              case "mobile":
-                newImg = "<img src='/public/logos/mobile.svg' alt='mobile'  height='20' width='20'/>";
-                break;
-              case "switch":
-                newImg = "<img src='/style/images/switch.svg' alt='switch'  height='20' width='20'/>";
-                break;
-            }
-            return acc + newImg;
-          },'')}
-          </div>
-         </article>`
+        </div>
+        <div class="icons">${article.parent_platforms.reduce(function(acc, element){
+          let newImg = ''
+          switch (element.platform.name.toLowerCase()) {
+            case "playstation":
+              newImg = "<img src='/public/logos/ps4.svg' alt='playstation'  height='20' width='20'/>";
+              break;
+            case "pc":
+              newImg = "<img src='/public/logos/windows.svg' alt='windows'  height='20' width='20'/>";
+              break;
+            case "xbox":
+              newImg = "<img src='/public/logos/xbox.svg' alt='xbox'  height='20' width='20'/>";
+              break;
+            case "nintendo":
+              newImg = "<img src='/public/logos/switch.svg' alt='switch'  height='20' width='20'/>";
+              break;
+            case "linux":
+              newImg = "<img src='/public/logos/linux.svg' alt='linux'  height='20' width='20'/>";
+              break;
+            case "mobile":
+              newImg = "<img src='/public/logos/mobile.svg' alt='mobile'  height='20' width='20'/>";
+              break;
+            case "switch":
+              newImg = "<img src='/style/images/switch.svg' alt='switch'  height='20' width='20'/>";
+              break;
+          }
+          return acc + newImg;
+        },'')}
+        </div>
+      </article>`
       ));
       const resultsContainer = document.querySelector('.page-list .articles');
       resultsContainer.innerHTML = resultsContent.join("\n");
