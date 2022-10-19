@@ -8,12 +8,16 @@ $mobile-responsive : 640px;
 
 // Les couleurs, tailles de marges, typos, tailles de typos et tailles récurrentes doivent être des variables
 html {
+  font-family: $main-fonts;
   font-size: 30px;
 }
 
 h1 {
-  font-family: $main-fonts;
   font-size: 50px;
+}
+
+h2 {
+  font-size: 20px;
 }
 
 a, a:visited, a:hover {
@@ -44,7 +48,7 @@ a, a:visited, a:hover {
 }
 
 .title-list {
-  height: 75px;
+  height: 65px;
 }
 
 .cardGame a h2 {
@@ -121,8 +125,6 @@ position: absolute;
   padding-right: 0.8rem;
 }
 
-
-
 .articles {
   display: flex;
   flex-wrap: wrap;
@@ -137,6 +139,7 @@ position: absolute;
   flex-direction: column;
   width: 300px;
   padding-bottom: 25px;
+  cursor: pointer;
 }
 
 #pageContent {
