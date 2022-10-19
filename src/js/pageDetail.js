@@ -24,7 +24,7 @@ const PageDetail = (argument) => {
       })
 
       articleDOM.querySelector("a#website").setAttribute("href",website);
-      articleDOM.querySelector("p.video span").innerHTML = `<video controls>
+      articleDOM.querySelector("p.video span").innerHTML = `<video width="800" height="500" controls>
         <source src="${metacritic_url}" type="video/mp4">
         Your browser does not support the video tag.
         </video>`;
