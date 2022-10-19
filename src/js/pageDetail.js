@@ -8,19 +8,19 @@ const PageDetail = (argument) => {
       articleDOM.querySelector("h1.title").innerHTML = name;
       articleDOM.querySelector("div > img").src = background_image;
       developers.map(function(element){
-        articleDOM.querySelector("p.developers span").innerHTML += `<a href='pageList/${element.name}'>${element.name}</a>` + ' ';
+        articleDOM.querySelector("p.developers span").innerHTML += `<a href='#pagelist/developers++${element.name}'>${element.name}</a>` + ' ';
       })
       tags.map(function(element){
-        articleDOM.querySelector("p.tags span").innerHTML += `<a href='pageList/${element.name}'>${element.name}</a>` + ' ';
+        articleDOM.querySelector("p.tags span").innerHTML += `<a href='#pagelist/tags++${element.name}'>${element.name}</a>` + ' ';
       })
       genres.map(function(element){
-        articleDOM.querySelector("p.genres span").innerHTML += `<a href='pageList/${element.name}'>${element.name}</a>` + ' ';
+        articleDOM.querySelector("p.genres span").innerHTML += `<a href='#pagelist/genres++${element.name}'>${element.name}</a>` + ' ';
       })
       publishers.map(function(element){
-        articleDOM.querySelector("p.publishers span").innerHTML += `<a href='pageList/${element.name}'>${element.name}</a>` + ' ';
+        articleDOM.querySelector("p.publishers span").innerHTML += `<a href='#pagelist/publishers++${element.name}'>${element.name}</a>` + ' ';
       })
       platforms.map(function(element){
-        articleDOM.querySelector("p.platforms span").innerHTML += `<a href='pageList/${element.platform.name}'>${element.platform.name}</a>` + ' ';
+        articleDOM.querySelector("p.platforms span").innerHTML += `<a href='#pagelist/platforms++${element.platform.name}'>${element.platform.name}</a>` + ' ';
       })
 
       articleDOM.querySelector("a#website").setAttribute("href",website);
@@ -32,9 +32,6 @@ const PageDetail = (argument) => {
         articleDOM.querySelector(".ratingcount").innerHTML = ratings_count.toString() + ' ' + 'votes';
       articleDOM.querySelector("p.release-date span").innerHTML = released;
       articleDOM.querySelector("p.description span").innerHTML = description;
-      // screenshots.map(function(element){
-      //   articleDOM.querySelectorAll("div.screenshots").innerHTML += `<img src=${element}>`;
-      // })
       stores.map(function(element){
         articleDOM.querySelector(".stores").innerHTML += `<span><a href='http://${element.store.domain}' target="_blank">${element.store.name}</p></span>`;
       })
