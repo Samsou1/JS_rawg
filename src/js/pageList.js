@@ -107,7 +107,7 @@ const PageList = (argument = '', items = 9, platform = '',argumentType ='') => {
     </select>
     <div class="articles">Loading...</div>
     </section>
-    <button id="showmore"data-results='${items}'>Show more</button>
+    <button id="showmore"data-results='${items}'>➕</button>
     
     `;
     preparePage();
