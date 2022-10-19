@@ -59,8 +59,6 @@ const PageList = (argument = '', items = 9, platform = '',argumentType ='') => {
     };
     const fetchList = (url, argument) => {
       let finalURL;
-      console.log(cleanedArgument)
-      console.log(argumentType)
       switch(argumentType){
         case 'developers':
           finalURL= argument ? `${url}&developers=${cleanedArgument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
@@ -82,7 +80,6 @@ const PageList = (argument = '', items = 9, platform = '',argumentType ='') => {
           break;
       }
       finalURL += platform ? `&platforms=${platform}` : '';
-      console.log(finalURL)
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
