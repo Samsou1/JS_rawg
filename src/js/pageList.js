@@ -1,14 +1,10 @@
-
-
-const PageList = (argument = "", items = 9) => {
+const PageList = (argument = '', items = 9) => {
   const preparePage = () => {
     const cleanedArgument = argument.trim().replace(/\s+/g, "-");
     const displayResults = (articles) => {
       console.log(articles)
-      const resultsContent = articles.map(
-        (article) =>
-          `
-        <article class="cardGame">
+      const resultsContent = articles.map((article) => (
+        `<article class="cardGame">
           <img src=${article.background_image} class="image">
           <a href="#pagedetail/${article.id}"><h2>${article.name}</h2></a>
           <div class="overlay">
@@ -47,15 +43,13 @@ const PageList = (argument = "", items = 9) => {
           </p>
          </article>
          `
-      );
+      ));
       const resultsContainer = document.querySelector(".page-list .articles");
       resultsContainer.innerHTML = resultsContent.join("\n");
     };
 
     const fetchList = (url, argument) => {
-      const finalURL = argument
-        ? `${url}&search=${argument}&page_size=${items}`
-        : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
+      const finalURL = argument ? `${url}&search=${argument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
@@ -71,6 +65,17 @@ const PageList = (argument = "", items = 9) => {
 
   const render = () => {
     pageContent.innerHTML = `
+    <select>
+        <option selected="">Please Select</option>
+        <option>PC</option>
+        <option>PlayStation 4</option>
+        <option>PlayStation 5</option>
+        <option>Xbox Series S/X</option>
+        <option>Xbox One</option>
+        <option>Nintendo Switch</option>
+        <option>Wii</option>
+        <option>Nintendo 3DS</option>
+    </select>
     <section class="page-list">
     <div class="articles">Loading...</div>
     </section>
@@ -78,6 +83,11 @@ const PageList = (argument = "", items = 9) => {
     
     `;
     preparePage();
+    const select = document.querySelector('select');
+    const { hash } = window.location;
+    const pathParts = hash.substring(1).split('/');
+    const pageArgument = pathParts[1] || '';
+    select.addEventListener('change', () => PageList(pageArgument, '9', platforms[`${select.value}`]))
   };
 
   render();
@@ -96,4 +106,6 @@ const PageList = (argument = "", items = 9) => {
     }
   });
 };
+
+
 export default PageList;
