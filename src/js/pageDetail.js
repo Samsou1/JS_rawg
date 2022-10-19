@@ -8,19 +8,19 @@ const PageDetail = (argument) => {
       articleDOM.querySelector("h1.title").innerHTML = name;
       articleDOM.querySelector("div > img").src = background_image;
       developers.map(function(element){
-        articleDOM.querySelector("p.developers span").innerHTML += `<a href='#pagelist/${element.name}'>${element.name}</a>` + ' ';
+        articleDOM.querySelector("p.developers span").innerHTML += `<a href='#pagelist/developers++${element.name}'>${element.name}</a>` + ' ';
       })
       tags.map(function(element){
-        articleDOM.querySelector("p.tags span").innerHTML += `<a href='#pagelist/${element.name}'>${element.name}</a>` + ' ';
+        articleDOM.querySelector("p.tags span").innerHTML += `<a href='#pagelist/tags++${element.name}'>${element.name}</a>` + ' ';
       })
       genres.map(function(element){
-        articleDOM.querySelector("p.genres span").innerHTML += `<a href='#pagelist/${element.name}'>${element.name}</a>` + ' ';
+        articleDOM.querySelector("p.genres span").innerHTML += `<a href='#pagelist/genres++${element.name}'>${element.name}</a>` + ' ';
       })
       publishers.map(function(element){
-        articleDOM.querySelector("p.publishers span").innerHTML += `<a href='#pagelist/${element.name}'>${element.name}</a>` + ' ';
+        articleDOM.querySelector("p.publishers span").innerHTML += `<a href='#pagelist/publishers++${element.name}'>${element.name}</a>` + ' ';
       })
       platforms.map(function(element){
-        articleDOM.querySelector("p.platforms span").innerHTML += `<a href='#pagelist/${element.platform.name}'>${element.platform.name}</a>` + ' ';
+        articleDOM.querySelector("p.platforms span").innerHTML += `<a href='#pagelist/platforms++${element.platform.name}'>${element.platform.name}</a>` + ' ';
       })
 
       articleDOM.querySelector("a#website").setAttribute("href",website);
@@ -42,7 +42,6 @@ const PageDetail = (argument) => {
       fetch(`${url}/${argument}?key=${import.meta.env.VITE_API_KEY}`)
         .then((response) => response.json())
         .then((responseData) => {
-          console.log(responseData)
           displayGame(responseData);
         });
     };

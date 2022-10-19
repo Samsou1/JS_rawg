@@ -13,11 +13,12 @@ const routes = {
 const callRoute = () => {
   const { hash } = window.location;
   const pathParts = hash.substring(1).split('/');
-
   const pageName = pathParts[0];
   const pageArgument = pathParts[1] || '';
   const pageFunction = routes[pageName];
-  if (pageFunction !== undefined) {
+  if(pageArgument.split('++').length > 1) {
+    pageFunction(pageArgument.split('++')[1], 9, '', pageArgument.split('++')[0]);
+  }else if(pageArgument.split('++').length == 1 && pageFunction !== undefined){
     pageFunction(pageArgument);
   }
 };

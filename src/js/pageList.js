@@ -1,7 +1,7 @@
-const platforms = {'PC' : 4, 'PlayStation 5' :187, 'Xbox One':1, 'PlayStation 4': 18,'Xbox Series S/X':186, 'Linux' : 6, 'Nintendo Switch':7 , 'iOS':3, 'Android':21, 'Nintendo 3DS':8, 'Nintendo DS':9, 'Nintendo DSi':13, 'macOS':5, 'Xbox 360':14, 'Xbox':80, 'PlayStation 3':16, 'PlayStation ':15, 'PS Vita':19, 'PSP':17, 'Wii U':10, 'Wii':11, 'GameCube':105, 'Nintendo 64':83, 'Game Boy Advance':24, 'Game Boy Color':43, 'Game Boy':26}
-const PageList = (argument = '', items = 9, platform = '') => {
+const platforms = {'PC' : 4,'pc' : 4, 'PlayStation 5' :187, 'playstation-5' :187,'Xbox One':1,'xbox-one':1, 'PlayStation 4': 18,'playstation-4': 18,'Xbox Series S/X':186,'xbox-series-s/x':186, 'Linux' : 6,'linux' : 6, 'Nintendo Switch':7 ,'nintendo-switch':7, 'iOS':3,'ios':3, 'Android':21, 'android':21,'Nintendo 3DS':8, 'Nintendo DS':9, 'Nintendo DSi':13, 'macOS':5, 'Xbox 360':14, 'xbox-360':14,'Xbox':80, 'xbox':80,  'PlayStation 3':16, 'playStation-3':16,'PlayStation ':15, 'playStation ':15,'PS Vita':19, 'ps-vita':19,'PSP':17,'psp':17, 'Wii U':10,'wii-u':10, 'Wii':11,'wii':11, 'GameCube':105, 'Nintendo 64':83, 'Game Boy Advance':24, 'Game Boy Color':43, 'Game Boy':26}
+const PageList = (argument = '', items = 9, platform = '',argumentType ='') => {
   const preparePage = () => {
-    const cleanedArgument = argument.trim().replace(/\s+/g, "-");
+    const cleanedArgument = argument.trim().replace(/\s+/g, "-").replace(/%20/g, "-").toLowerCase();
     const displayResults = (articles) => {
       const resultsContent = articles.map((article) => (
         `<article onclick="location.href='#pagedetail/${article.id}';" class="cardGame">
@@ -58,8 +58,31 @@ const PageList = (argument = '', items = 9, platform = '') => {
       resultsContainer.innerHTML = resultsContent.join("\n");
     };
     const fetchList = (url, argument) => {
-      let finalURL = argument ? `${url}&search=${argument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
+      let finalURL;
+      console.log(cleanedArgument)
+      console.log(argumentType)
+      switch(argumentType){
+        case 'developers':
+          finalURL= argument ? `${url}&developers=${cleanedArgument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
+          break;
+        case 'publishers':
+          finalURL= argument ? `${url}&publishers=${cleanedArgument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
+          break;
+        case 'genres':
+          finalURL= argument ? `${url}&genres=${cleanedArgument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
+          break;
+        case 'platforms':
+            finalURL= argument ? `${url}&platforms=${platforms[argument]}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
+            break;
+        case 'tags':
+          finalURL= argument ? `${url}&tags=${cleanedArgument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
+          break;
+        default:
+          finalURL= argument ? `${url}&search=${cleanedArgument}&page_size=${items}` : `${url}&dates=2022-10-30,2023-12-31&page_size=${items}`;
+          break;
+      }
       finalURL += platform ? `&platforms=${platform}` : '';
+      console.log(finalURL)
       fetch(finalURL)
         .then((response) => response.json())
         .then((responseData) => {
@@ -95,21 +118,36 @@ const PageList = (argument = '', items = 9, platform = '') => {
     const { hash } = window.location;
     const pathParts = hash.substring(1).split('/');
     const pageArgument = pathParts[1] || '';
-    select.addEventListener('change', () => PageList(pageArgument, '9', platforms[`${select.value}`]))
+    select.addEventListener('change', () => {
+      if(pageArgument.split('++').length > 1) {
+        PageList(pageArgument.split('++')[1], '9', platforms[`${select.value}`], pageArgument.split('++')[0]);
+      }else{
+        PageList(pageArgument, '9', platforms[`${select.value}`]);
+      }
+    })
   };
 
   render();
   const button = document.querySelector("button");
   button.addEventListener("click", (e) => {
     e.preventDefault();
+    const select = document.querySelector('select');
     const { hash } = window.location;
     const pathParts = hash.substring(1).split("/");
     const pageArgument = pathParts[1] || "";
     if (button.dataset.results == "9") {
       button.dataset.results = "18";
-      PageList(pageArgument, "18");
+      if(pageArgument.split('++').length > 1) {
+        PageList(pageArgument.split('++')[1], '18', platforms[`${select.value}`], pageArgument.split('++')[0]);
+      }else{
+        PageList(pageArgument, '18', platforms[`${select.value}`]);
+      }
     } else {
-      PageList(pageArgument, "27");
+      if(pageArgument.split('++').length > 1) {
+        PageList(pageArgument.split('++')[1], '27', platforms[`${select.value}`], pageArgument.split('++')[0]);
+      }else{
+        PageList(pageArgument, '27', platforms[`${select.value}`]);
+      }
       document.querySelector("button").remove();
     }
   });
