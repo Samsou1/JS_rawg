@@ -209,14 +209,13 @@ height: 50%;
 .articles {
   color: rgb(160, 159, 187);
   padding-bottom: 1rem;
-  @include mobile {
+}
+
+@include mobile {
     #search {
       width: 70%;
     }
   }
-}
-
-}
 
 .rating{
   padding: 1rem 0;
