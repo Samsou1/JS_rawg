@@ -1,9 +1,26 @@
 # RAWG video game browsing site
 
-## TODO
+## What's that for?
 
-1. Durant tous ces processus, une select est disponible. Le journaliste peut trier les jeux afin d'afficher présents sur sa plateforme uniquement ceux dont il doit parler dans son article.
+This app allows you to browse video games. You can filter by platform or by name. 
+By default the app will show you 9 of the most awaited games of next year.
+You can of course display more games if you'd like. 
 
-2. Les jeux sont affichés sous forme de cards. Par défaut, nous pouvons voir le nom et les plateformes disponibles ainsi qu'une image de présentation. Au hover de la card, on peut voir la date de sortie, l'éditeur, le(s) genre(s) du jeu, ainsi que sa note et le nombre de votes qui apparaissent à la place de l'image.
+## How to run the server
+By default the app will show you 9 of the most expected games of next year.
+You can of course display more games if you'd like. 
 
-3. Une base de mobile doit être faite, mais si elle n'est pas complète, ce n'est pas grave, tu n'as pas le temps de faire un SCSS et/ou Bootstrap complet. L'essentiel est que le site ne soit pas 100% cassé si on le regarde sur mobile.
+## How to launch the server
+
+You can use npm, pnpm or yarn to run the server
+```
+npm run dev
+```
+
+```
+pnpm run dev
+```
+
+```
+yarn run dev
+```

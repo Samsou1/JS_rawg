@@ -82,24 +82,42 @@ header {
   width: 90%;
 }
 
-.image {
+.image{
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-
+  margin-bottom: 9%;
+  display: flex;
 }
 
-.overlay{
-position: absolute;
-  bottom: 0;
+.overlay {
+  position: absolute;
+  bottom: 100%;
   left: 0;
   right: 0;
-  background-color: #008CBA;
+  background-color: #3c6275c3;
   overflow: hidden;
   width: 100%;
   height: 0;
   transition: .5s ease;
 }
 
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width:100%;
+}
+
+.cardGame:hover .overlay{
+bottom: 50%;
+height: 50%;
+}
 #search {
   padding: 1rem 2rem;
   font-size: 1.4rem;
@@ -118,12 +136,15 @@ position: absolute;
 }
 
 .cardGame {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 300px;
   padding-bottom: 25px;
   cursor: pointer;
 }
+
+
 
 #pageContent {
   display: flex;
@@ -157,6 +178,14 @@ position: absolute;
   align-items: center;
 }
 
+.game-header p {
+    padding: 0.4rem;
+    margin: 0 0.4rem;
+    border-radius: 3px;
+    font-weight: 600;
+    color: red;
+}
+
 .game-informations {
   display: flex;
   flex-wrap: wrap;
@@ -164,6 +193,10 @@ position: absolute;
 
 .game-informations > p {
   flex: 1 0 21%;
+  color: #fff;
+  padding-left: 1rem;
+  font-weight: 800;
+  color: red;
 }
 
 @mixin mobile{
@@ -179,16 +212,60 @@ position: absolute;
   
 }
 
-.body::-webkit-scrollbar{
-  width: 8px;
+.rating{
+  padding: 1rem 0;
+  color: red;
 }
 
-.body::-webkit-scrollbar-track{
-  box-shadow: inset 0 0 6px  rgb(128, 0, 34);
+
+.ratingcount{
+  color: red;
 }
 
 .body::-webkit-scrollbar-thumb{
   background-color: green;
   outline: none;
   border-radius: 10px;
+}
+
+.title {
+  font-size: 4rem;
+  color: #fff;
+  padding-left: 1rem;
+}
+
+.subtitle {
+  padding-left: 1rem;
+  color: #fff;
+}
+
+.subtitle h3{
+  font-weight: 800;
+  color: red;
+}
+
+.date-release {
+  color:#fff;
+  font-weight: 500;
+}
+
+#website {
+  max-width: 8rem;
+  padding-left: 1rem;
+  border-radius: 4rem;
+
+  &:after {
+		content: '';
+		height: 2px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		background: red;
+		transition: 0.2s;
+	}
+
+	&:hover:after {
+		width: 100%;
+	}
 }
