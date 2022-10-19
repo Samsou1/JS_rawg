@@ -67,14 +67,14 @@ const PageDetail = (argument) => {
           <p class="description"><span></span></p>
           </div>
           <div class='game-informations'>
-            <p class="release-date">Release date: <span></span></p>
+            <p class="release-date">Release date: <span class="date-release"></span></p>
             <p class='developers'>Developers: <span></span></p>
             <p class='platforms'>Platforms: <span></span></p>
             <p class='publishers'>Publishers: <span></span></p>
             <p class='tags'>Tags: <span></span></p>
             <p class='genres'>Genres: <span></span></p>
           </div>
-          <a id="website" href="" target="_blank">Website<span></span></a>
+          <a id="website" href="" target="_blank">Game website<span></span></a>
           <p class='video'><span></span></p>
         </div>
       </section>
