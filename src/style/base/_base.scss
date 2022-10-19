@@ -145,6 +145,8 @@ height: 50%;
   cursor: pointer;
 }
 
+
+
 #pageContent {
   display: flex;
   flex-direction: column;
@@ -207,11 +209,13 @@ height: 50%;
 .articles {
   color: rgb(160, 159, 187);
   padding-bottom: 1rem;
-@include mobile {
-  #search {
-    width: 70%;
+  @include mobile {
+    #search {
+      width: 70%;
+    }
   }
 }
+
 }
 
 .rating{
