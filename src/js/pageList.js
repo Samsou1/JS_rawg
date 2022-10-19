@@ -72,7 +72,7 @@ const PageList = (argument = '', items = 9, platform = '') => {
         <option>Nintendo 3DS</option>
     </select>
     <section class="page-list">
-    <div class="articles">Loading...</div>
+        <div class="articles">Loading...</div>
     </section>
     <button id="showmore"data-results='${items}'>Show more</button>
     
@@ -102,6 +102,4 @@ const PageList = (argument = '', items = 9, platform = '') => {
   })
 };
 
-
 export default PageList;
-
