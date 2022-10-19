@@ -4,9 +4,13 @@ const PageList = (argument = '', items = 9) => {
     const displayResults = (articles) => {
       console.log(articles)
       const resultsContent = articles.map((article) => (
-        `<article class="cardGame">
+        `
+        <article class="cardGame">
           <img src=${article.background_image} class="image">
           <a href="#pagedetail/${article.id}"><h2>${article.name}</h2></a>
+          <div class="overlay">
+          <div class="text">yo</div>
+          </div>
           <p>${article.parent_platforms.reduce(function(acc, element){
             // switch (element.platform.name) {
             //   case "playstation":
@@ -26,8 +30,10 @@ const PageList = (argument = '', items = 9) => {
             // }
             return acc + ' ' + element.platform.name
           },'')}
+         
           </p>
-         </article>`
+         </article>
+         `
       ));
       const resultsContainer = document.querySelector('.page-list .articles');
       resultsContainer.innerHTML = resultsContent.join("\n");
