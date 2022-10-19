@@ -118,6 +118,7 @@ header {
 bottom: 50%;
 height: 50%;
 }
+
 #search {
   padding: 1rem 2rem;
   font-size: 1.4rem;
@@ -143,8 +144,6 @@ height: 50%;
   padding-bottom: 25px;
   cursor: pointer;
 }
-
-
 
 #pageContent {
   display: flex;
@@ -212,7 +211,7 @@ height: 50%;
   #search {
     width: 70%;
   }
-  
+}
 }
 
 .rating{
