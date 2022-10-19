@@ -133,6 +133,14 @@ header {
   background-color: rgba(0,0,0,0.5);
  }
 
+ .stores {
+  color:red;
+  font-weight: 800;
+  display: flex;
+  gap: 5px;
+  padding-left: 1rem;
+ }
+
 #search {
   color: black;
   padding: 1rem 2rem;
