@@ -5,6 +5,7 @@ $red-color:rgb(170, 14, 45);
 $black-color: rgb(0, 0, 0);
 $headings-color: rgb(0, 0, 0);
 $mobile-responsive : 640px;
+$white-color: rgb(255, 255, 255);
 
 html {
   font-family: $main-fonts;
@@ -70,9 +71,15 @@ body {
   background-color: #292929;
 }
 
-.sort {
+@mixin select{
   padding: 10px;
   margin-bottom: 25px;
+  background: none;
+  color:$white-color;
+}
+
+.sort {
+  @include select
 }
 
 header {
@@ -161,7 +168,6 @@ header {
 }
 
 .cardGame {
-  position: relative;
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -179,10 +185,7 @@ header {
 }
 
 #showmore {
-  color: #fff;
-  cursor: pointer;
-  background-color: $red-color;
-  margin-bottom: 25px;
+ @include select()
 }
 
 // PAGE DETAIL

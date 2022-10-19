@@ -96,7 +96,7 @@ const PageList = (argument = '', items = 9, platform = '',argumentType ='') => {
     pageContent.innerHTML = `
     <section class="page-list">
     <select class="sort">
-        <option selected="">Please Select</option>
+        <option selected="texto">Please Select</option>
         <option>PC</option>
         <option>PlayStation 4</option>
         <option>PlayStation 5</option>
