@@ -4,9 +4,24 @@ const PageList = (argument = '', items = 9, platform = '') => {
     const cleanedArgument = argument.trim().replace(/\s+/g, '-');
     const displayResults = (articles) => {
       console.log(articles)
+    
+
+  
       const resultsContent = articles.map((article) => (
         `<article onclick="location.href='#pagedetail/${article.id}';" class="cardGame">
           <img src=${article.background_image} class="image">
+          <div class="overlay">
+          <div class="text">
+            <p>Released: ${article.released}</p>
+            <p>Genres: ${article.genres.reduce(function (acc, element) {
+              return (
+                acc +
+                " "
+              );
+            }, "")}</p>
+            <p>Rating: ${article.rating} (${article.ratings_count} votes)</p>
+          </div>
+        </div>
           <div class="title-list">
           <h2>${article.name}</h2>
           </div>
@@ -55,7 +70,10 @@ const PageList = (argument = '', items = 9, platform = '') => {
         });
     };
 
+    fetchList(
     fetchList(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}`, cleanedArgument);
+      cleanedArgument
+    );
   };
   
   const render = () => {
@@ -84,22 +102,22 @@ const PageList = (argument = '', items = 9, platform = '') => {
     const pageArgument = pathParts[1] || '';
     select.addEventListener('change', () => PageList(pageArgument, '9', platforms[`${select.value}`]))
   };
-  
+
   render();
-  const button = document.querySelector('button');
-  button.addEventListener('click', (e) => {
+  const button = document.querySelector("button");
+  button.addEventListener("click", (e) => {
     e.preventDefault();
     const { hash } = window.location;
-    const pathParts = hash.substring(1).split('/');
-    const pageArgument = pathParts[1] || '';
-    if(button.dataset.results == '9'){
-      button.dataset.results = '18';
+    const pathParts = hash.substring(1).split("/");
+    const pageArgument = pathParts[1] || "";
+    if (button.dataset.results == "9") {
+      button.dataset.results = "18";
       PageList(pageArgument,'18');
-    }else{
-      PageList(pageArgument,'27');
-      document.querySelector('button').remove();
+    } else {
+      PageList(pageArgument, "27");
+      document.querySelector("button").remove();
     }
-  })
+  });
 };
 
 export default PageList;
