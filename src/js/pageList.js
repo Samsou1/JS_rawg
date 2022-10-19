@@ -14,25 +14,25 @@ const PageList = (argument = '', items = 9, platform = '') => {
             let newImg = ''
             switch (element.platform.name.toLowerCase()) {
               case "playstation":
-                newImg = "<img src='/public/logos/ps4.svg' alt='playstation'  height='25' width='25'/>";
+                newImg = "<img src='/public/logos/ps4.svg' alt='playstation'  height='20' width='20'/>";
                 break;
               case "pc":
-                newImg = "<img src='/public/logos/windows.svg' alt='windows'  height='25' width='25'/>";
+                newImg = "<img src='/public/logos/windows.svg' alt='windows'  height='20' width='20'/>";
                 break;
               case "xbox":
-                newImg = "<img src='/public/logos/xbox.svg' alt='xbox'  height='25' width='25'/>";
+                newImg = "<img src='/public/logos/xbox.svg' alt='xbox'  height='20' width='20'/>";
                 break;
               case "nintendo":
-                newImg = "<img src='/public/logos/switch.svg' alt='switch'  height='25' width='25'/>";
+                newImg = "<img src='/public/logos/switch.svg' alt='switch'  height='20' width='20'/>";
                 break;
               case "linux":
-                newImg = "<img src='/public/logos/linux.svg' alt='linux'  height='25' width='25'/>";
+                newImg = "<img src='/public/logos/linux.svg' alt='linux'  height='20' width='20'/>";
                 break;
               case "mobile":
-                newImg = "<img src='/public/logos/mobile.svg' alt='mobile'  height='25' width='25'/>";
+                newImg = "<img src='/public/logos/mobile.svg' alt='mobile'  height='20' width='20'/>";
                 break;
               case "switch":
-                newImg = "<img src='/style/images/switch.svg' alt='switch'  height='25' width='25'/>";
+                newImg = "<img src='/style/images/switch.svg' alt='switch'  height='20' width='20'/>";
                 break;
             }
             return acc + newImg;
